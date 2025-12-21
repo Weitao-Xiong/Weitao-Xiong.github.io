@@ -15,6 +15,7 @@ const postsCollection = defineCollection({
 		authors: z.string().optional().default(""),
 		paper_link: z.string().optional().default(""),
 		website: z.string().optional().default(""),
+		showLicense: z.boolean().optional().default(true),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),
