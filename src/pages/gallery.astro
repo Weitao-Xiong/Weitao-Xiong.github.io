@@ -1,0 +1,39 @@
+---
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { Image } from "astro:assets";
+
+// 获取 gallery 文件夹中的所有图片
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/*.{jpeg,jpg,png,webp}');
+const imageList = await Promise.all(
+  Object.entries(images).map(async ([path, resolver]) => {
+    const image = await resolver();
+    const filename = path.split('/').pop()?.replace(/\.[^/.]+$/, '') || '';
+    return { src: image.default, name: filename };
+  })
+);
+---
+
+<MainGridLayout title="Gallery" description="Photos from Hong Kong">
+  <div class="card-base px-8 py-6">
+    <h1 class="text-3xl font-bold mb-2">📸 Gallery</h1>
+    <p class="text-neutral-500 dark:text-neutral-400 mb-6">Photos from my time in Hong Kong 🇭🇰</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {imageList.length > 0 ? (
+        imageList.map((img) => (
+          <div class="overflow-hidden rounded-xl group cursor-pointer">
+            <Image 
+              src={img.src} 
+              alt={img.name}
+              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+        ))
+      ) : (
+        <p class="col-span-full text-center text-neutral-400 py-8">
+          暂无图片，请将图片放入 <code class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">src/assets/gallery/</code> 文件夹
+        </p>
+      )}
+    </div>
+  </div>
+</MainGridLayout>

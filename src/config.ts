@@ -43,6 +43,11 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		{
+			name: "Gallery",
+			url: "/gallery/",
+			external: false,
+		},
 		LinkPreset.About,
 	],
 };
