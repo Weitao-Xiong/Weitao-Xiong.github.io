@@ -2,7 +2,7 @@
 
 Hi, I am **Weitao Xiong** 👋
 
-🎓 I am a fourth year Undergraduate student at [Xiamen University (Malaysia)](https://en.xmu.edu.cn/). My major is Computer Science. My Final Year Project advisor is [Prof. Hongfei Xue](https://havocfixer.github.io/).
+🎓 I am a fourth year Undergraduate student at [Xiamen University (Malaysia)](https://en.xmu.edu.cn/). My major is Computer Science, and my Final Year Project is advised by [Prof. Hongfei Xue](https://havocfixer.github.io/).
 
 I was happy to spend half a year in Hong Kong as a visiting student at [HKUST](https://hkust.edu.hk/) (March - September 2025), advised by [Prof. Yuan Liu](https://liuyuan-pal.github.io/). Hong Kong is a beautiful place!
 
