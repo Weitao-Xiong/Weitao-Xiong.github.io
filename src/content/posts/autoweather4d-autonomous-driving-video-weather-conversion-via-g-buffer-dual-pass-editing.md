@@ -9,7 +9,7 @@ tags:
   - Inverse Rendering
   - Video Generation
   - under review
-category: Under Review
+category: Research
 draft: false
 description: ""
 ---
