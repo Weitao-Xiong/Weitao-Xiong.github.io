@@ -1,7 +1,8 @@
 ---
-import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
 import { getEntry, render } from "astro:content";
 import Markdown from "@components/misc/Markdown.astro";
+import type { Page } from "astro";
 import Pagination from "../components/control/Pagination.astro";
 import PostPage from "../components/PostPage.astro";
 import { PAGE_SIZE } from "../constants/constants";
@@ -14,7 +15,7 @@ const firstPagePosts = allBlogPosts.slice(0, PAGE_SIZE);
 const totalPages = Math.ceil(allBlogPosts.length / PAGE_SIZE);
 
 // 创建分页对象（模拟 paginate 返回的结构）
-const page: Page<typeof allBlogPosts> = {
+const page: Page<CollectionEntry<"posts">> = {
 	data: firstPagePosts,
 	currentPage: 1,
 	size: PAGE_SIZE,
@@ -24,6 +25,8 @@ const page: Page<typeof allBlogPosts> = {
 		current: "/",
 		prev: undefined,
 		next: totalPages > 1 ? "/2/" : undefined,
+		first: "/",
+		last: totalPages > 1 ? `/${totalPages}/` : "/",
 	},
 };
 

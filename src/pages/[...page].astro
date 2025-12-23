@@ -10,7 +10,13 @@ import { getSortedPosts } from "../utils/content-utils";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+	const pages = paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+	// 排除第一页，因为首页由 index.astro 处理
+	// 第一页的 params.page 可能是 "1" 或 undefined（如果是根路径）
+	return pages.filter((page) => {
+		const pageNum = page.params.page;
+		return pageNum !== "1" && pageNum !== undefined;
+	});
 }) satisfies GetStaticPaths;
 // https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
