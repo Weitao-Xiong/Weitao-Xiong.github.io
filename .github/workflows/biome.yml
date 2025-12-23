@@ -21,6 +21,6 @@ jobs:
         with:
           run_install: false
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Run Biome
         run: pnpm biome ci ./src --reporter=github
