@@ -27,7 +27,7 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 // https://astro.build/config
 export default defineConfig({
 	// 配置 GitHub Pages 部署
-	// 部署到主站点 https://Weitao-Xiong.github.io
+	// 部署到用户站点 https://Weitao-Xiong.github.io
 	site: "https://Weitao-Xiong.github.io",
 	base: "/",
 	trailingSlash: "always",

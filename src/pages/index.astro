@@ -1,0 +1,48 @@
+---
+import type { Page } from "astro";
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import Pagination from "../components/control/Pagination.astro";
+import PostPage from "../components/PostPage.astro";
+import { PAGE_SIZE } from "../constants/constants";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { getSortedPosts } from "../utils/content-utils";
+
+// 获取所有文章并分页
+const allBlogPosts = await getSortedPosts();
+const firstPagePosts = allBlogPosts.slice(0, PAGE_SIZE);
+const totalPages = Math.ceil(allBlogPosts.length / PAGE_SIZE);
+
+// 创建分页对象（模拟 paginate 返回的结构）
+const page: Page<typeof allBlogPosts> = {
+	data: firstPagePosts,
+	currentPage: 1,
+	size: PAGE_SIZE,
+	total: allBlogPosts.length,
+	lastPage: totalPages,
+	url: {
+		current: "/",
+		prev: undefined,
+		next: totalPages > 1 ? "/2/" : undefined,
+	},
+};
+
+const len = page.data.length;
+
+// 获取 About Me 内容
+const aboutPost = await getEntry("spec", "about");
+const { Content } = aboutPost ? await render(aboutPost) : { Content: null };
+---
+
+<MainGridLayout>
+    {Content && (
+        <div class="card-base px-8 py-6 mb-4 onload-animation">
+            <Markdown class="">
+                <Content />
+            </Markdown>
+        </div>
+    )}
+    <PostPage page={page}></PostPage>
+    <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+</MainGridLayout>
+
