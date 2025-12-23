@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
 		await fs.mkdir(path.dirname(uploadPath), { recursive: true });
 
 		// 写入文件
-		await fs.writeFile(uploadPath, Buffer.from(buffer));
+		await fs.writeFile(uploadPath, new Uint8Array(buffer));
 
 		// 返回文件路径
 		const publicPath = `/src/assets/${folder}/${fileName}`;
