@@ -21,6 +21,8 @@ const page: Page<CollectionEntry<"posts">> = {
 	size: PAGE_SIZE,
 	total: allBlogPosts.length,
 	lastPage: totalPages,
+	start: 1,
+	end: firstPagePosts.length,
 	url: {
 		current: "/",
 		prev: undefined,
