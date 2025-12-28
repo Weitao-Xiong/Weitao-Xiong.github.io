@@ -2,7 +2,7 @@
 
 Hi, I am **Weitao Xiong (熊伟韬)** 👋
 
-🎓 I am a fourth year Computer Science undergraduate student at [Xiamen University (Malaysia)](https://en.xmu.edu.cn/). My Final Year Project is about 4D Avatar Reconstruction and mmWave Simulation, advised by [Prof. Hongfei Xue](https://havocfixer.github.io/). The paper and code will release soon. 😊
+🎓 I am a fourth year Computer Science undergraduate student at [Xiamen University (Malaysia)](https://en.xmu.edu.cn/). My Final Year Project is about 4D Avatar Reconstruction and mmWave Simulation, advised by [Prof. Hongfei Xue](https://havocfixer.github.io/). The paper and code will be released soon. 😊
 
 I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](https://hkust.edu.hk/) (March - September 2025), advised by [Prof. Yuan Liu](https://liuyuan-pal.github.io/). Hong Kong is a beautiful place!
 
