@@ -4,7 +4,7 @@ title: "HuPrior3R: Incorporating Human Priors for Better 3D Dynamic
 authors: Weitao Xiong*, Zhiyuan Yuan*, Jiahao Lu, Chengfeng Zhao, Peng Li, Yuan Liu†
 paper_link: https://www.arxiv.org/abs/2512.06368
 published: 2025-12-21T01:24:00.000+08:00
-image: /src/assets/images/human3r_teaser.jpg
+image: /src/assets/videos/HuPrior3R.gif
 tags:
   - 3D Reconstruction
   - arxiv
