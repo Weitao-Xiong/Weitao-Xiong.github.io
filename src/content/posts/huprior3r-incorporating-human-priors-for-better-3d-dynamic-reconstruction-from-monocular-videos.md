@@ -7,6 +7,7 @@ published: 2025-12-21T01:24:00.000+08:00
 image: /src/assets/videos/HuPrior3R.gif
 tags:
   - 3D Reconstruction
+  - Human Motion
   - arxiv
 category: Research
 draft: false
