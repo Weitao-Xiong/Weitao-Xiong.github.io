@@ -5,7 +5,7 @@ authors: Jiahao Lu, Weitao Xiong, Jiacheng Deng, Peng Li, Tianyu Huang, Zhiyang
 paper_link: https://arxiv.org/abs/2512.08358
 website: https://igl-hkust.github.io/TrackingWorld.github.io/
 published: 2025-12-21T23:40:00.000+08:00
-image: /src/assets/images/tracking_world_teaser.jpg
+image: /src/assets/videos/TrackingWorld.gif
 tags:
   - 3D Reconstruction
   - NeurIPS 2025
