@@ -4,6 +4,7 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { formatDateToYYYYMMDD } from "../utils/date-utils";
 import { getCategoryUrl, getTagUrl } from "../utils/url-utils";
+import { profileConfig } from "../config";
 
 interface Props {
 	class: string;
@@ -31,6 +32,22 @@ const {
 	hidePublishedDate = false,
 } = Astro.props;
 const className = Astro.props.class;
+
+// Function to format author names, bolding the user's name
+function formatAuthorNames(authorString: string, userName: string): string {
+	if (!authorString) return "";
+	
+	const authors = authorString.split(",").map(a => a.trim());
+	const formattedAuthors = authors.map(author => {
+		if (author.includes(userName)) {
+			// Bold the user's name
+			return `<strong>${author}</strong>`;
+		}
+		return author;
+	});
+	
+	return formattedAuthors.join(", ");
+}
 ---
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
@@ -96,7 +113,7 @@ const className = Astro.props.class;
             <div class="meta-icon">
                 <Icon name="material-symbols:person-outline-rounded" class="text-xl"></Icon>
             </div>
-            <span class="text-50 text-sm font-medium">{author}</span>
+            <span class="text-50 text-sm font-medium" set:html={formatAuthorNames(author, profileConfig.name)}></span>
         </div>
     )}
 

@@ -27,7 +27,8 @@ const { Content, headings } = await entry.render();
 const { remarkPluginFrontmatter } = await entry.render();
 
 // Check if cover is PDF
-const imagePath = entry.data.image || "";
+// Use coverImage for detail page if available, otherwise fall back to image
+const imagePath = entry.data.coverImage || entry.data.image || "";
 const isPdf = imagePath.toLowerCase().endsWith(".pdf");
 const basePath = path.join("content/posts/", getDir(entry.id));
 // If PDF is in assets folder, use /src/assets/ path, otherwise use relative path
