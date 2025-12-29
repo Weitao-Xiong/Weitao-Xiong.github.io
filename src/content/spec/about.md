@@ -8,7 +8,7 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 
 >  **[View some photos from Hong Kong → 📸](/gallery/)**
 
-~~💼 I am looking for a whole semester (2026 Spring) internship now.~~ 
+~~💼 I am looking for a whole semester (2026 Spring) internship now.~~ I am happy to visit Tsinghua University as an intern in Beijing, under the guidance of [Prof. Yiming Li](https://yimingli-page.github.io/). 
 
 ---
 
