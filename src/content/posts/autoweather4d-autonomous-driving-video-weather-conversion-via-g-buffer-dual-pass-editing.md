@@ -4,6 +4,7 @@ title: "AutoWeather4D: Autonomous Driving Video Weather Conversion via G-Buffer
 authors: Tianyu Liu*, Weitao Xiong*, Kunming Luo, Manyuan Zhang, Peng Li, Yuan
   Liu†, Ping Tan†
 website: https://lty2226262.github.io/autoweather4d/
+paper_link: https://arxiv.org/pdf/2603.26546
 published: 2025-12-22T00:57:00.000+08:00
 image: /src/assets/videos/AutoWeather4D.gif
 coverImage: /src/assets/images/autoweather4d_teaser.jpg
