@@ -8,7 +8,7 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 
 >  **[View some photos from Hong Kong → 📸](/gallery/)**
 
-💼 I am currently interning at [Tsinghua University](https://www.tsinghua.edu.cn/en/) under the guidance of [Prof. Yiming Li](https://yimingli-page.github.io/) and at [GenRobot AI](https://www.genrobot.ai/), a robotics startup.
+💼 I am currently interning at [Tsinghua University](https://www.tsinghua.edu.cn/en/) under the guidance of [Prof. Yiming Li](https://yimingli-page.github.io/) and at [GenRobot AI](https://www.genrobot.ai/), a robotics startup, mentored by [Shuyang Gu](https://cientgu.github.io/). My current research focuses on WAM (World Action Model).
 
 ---
 
