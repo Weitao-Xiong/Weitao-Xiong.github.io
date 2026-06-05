@@ -1,0 +1,44 @@
+---
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import type { GetStaticPaths } from "astro";
+import Pagination from "../components/control/Pagination.astro";
+import PostPage from "../components/PostPage.astro";
+import { PAGE_SIZE } from "../constants/constants";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { getSortedPosts } from "../utils/content-utils";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const allBlogPosts = await getSortedPosts();
+	const pages = paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+	// 排除第一页，因为首页由 index.astro 处理
+	// 第一页的 params.page 可能是 "1" 或 undefined（如果是根路径）
+	return pages.filter((page) => {
+		const pageNum = page.params.page;
+		return pageNum !== "1" && pageNum !== undefined;
+	});
+}) satisfies GetStaticPaths;
+// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
+
+const { page } = Astro.props;
+const len = page.data.length;
+
+// 获取 About Me 内容
+const aboutPost = await getEntry("spec", "about");
+const { Content } = aboutPost ? await render(aboutPost) : { Content: null };
+
+// 只在首页显示 About Me
+const isFirstPage = page.currentPage === 1;
+---
+
+<MainGridLayout>
+    {isFirstPage && Content && (
+        <div class="card-base px-8 py-6 mb-4 onload-animation">
+            <Markdown class="">
+                <Content />
+            </Markdown>
+        </div>
+    )}
+    <PostPage page={page}></PostPage>
+    <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+</MainGridLayout>

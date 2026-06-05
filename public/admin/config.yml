@@ -1,0 +1,30 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: Weitao-Xiong/self_website
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/src/assets/images"
+
+locale: 'en'
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "text", required: false }
+      - { label: "Paper Link", name: "paper_link", widget: "string", required: false, hint: "Link to paper (e.g., arXiv, conference paper URL)" }
+      - { label: "Project Website / Poster URL", name: "website", widget: "string", required: false }
+      - { label: "Published Date", name: "published", widget: "datetime" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "PDF File", name: "pdf", widget: "file", required: false }
+      - { label: "Tags", name: "tags", widget: "select", multiple: true, required: false, options: ["3D Reconstruction", "Inverse Rendering", "Video Generation", "Human Motion", "NeurIPS 2025", "arxiv", "under review"] }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Content", name: "body", widget: "markdown" }
