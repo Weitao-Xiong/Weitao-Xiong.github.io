@@ -7,7 +7,7 @@ coverImage: /src/assets/images/mmWave_teaser.jpg
 tags:
   - mmWave Synthesis
   - Inverse Rendering
-  - ECCV26
+  - ECCV 2026
 category: Research
 draft: false
 description: ""
