@@ -14,7 +14,7 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 
 ## NEWS
 
-- **2026-06-18**: Two first-author papers, **AutoWeather4D** and **HybridSim**, have been accepted to **ECCV 2026**.
+- **[2026-06-18]**: Two first-author papers, **AutoWeather4D** and **HybridSim**, have been accepted to **ECCV 2026**! 🎉🎉🎉
 
 ---
 
@@ -24,3 +24,4 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 - 🎨 [Inverse Rendering](/archive/?tag=Inverse%20Rendering)
 - 🎬 [Video Generation](/archive/?tag=Video%20Generation)
 - 🏃 [Human Motion](/archive/?tag=Human%20Motion)
+- 🦾 [World Action Model]
