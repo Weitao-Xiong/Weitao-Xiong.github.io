@@ -11,7 +11,7 @@ coverImage: /src/assets/images/autoweather4d_teaser.jpg
 tags:
   - Inverse Rendering
   - Video Generation
-  - under review
+  - ECCV26
 category: Research
 draft: false
 description: ""

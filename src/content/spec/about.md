@@ -12,6 +12,12 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 
 ---
 
+## NEWS
+
+- **2026-06-18**: Two first-author papers, **AutoWeather4D** and **HybridSim**, have been accepted to **ECCV 2026**.
+
+---
+
 ## 🔬 Research Interests
 
 - 🧊 [3D Reconstruction](/archive/?tag=3D%20Reconstruction)
