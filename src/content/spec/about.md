@@ -15,6 +15,7 @@ I was happy to spend half a year in Hong Kong as an exchange student at [HKUST](
 ## NEWS
 
 - **[2026-06-18]**: Two first-author papers have been accepted to **ECCV 2026**! 🎉🎉🎉
+- **[2025-09-18]**: One paper has been accepted to **NeurIPS 2025**!
 
 ---
 
