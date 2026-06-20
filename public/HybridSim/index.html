@@ -154,26 +154,6 @@
       color: var(--muted);
     }
 
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .method-card {
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--surface-soft);
-    }
-
-    .method-card strong {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--fg);
-    }
-
     .gallery-intro {
       display: flex;
       flex-wrap: wrap;
@@ -315,7 +295,6 @@
     }
 
     @media (max-width: 980px) {
-      .method-grid,
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -364,24 +343,6 @@
       <h2>Abstract</h2>
       <p>High-fidelity simulation of mmWave radar signals for dynamic human motion is valuable for developing radar-based human sensing models, but collecting accurately labeled measurements for each deployment site remains expensive.</p>
       <p>HybridSim synthesizes mmWave radar signals from dynamic human meshes under a fixed indoor room configuration by decoupling propagation into direct inverse-rendering paths and indirect 3DGS-based paths. This hybrid design improves agreement with physically based references while keeping site-specific data augmentation practical.</p>
-    </section>
-
-    <section id="method">
-      <h2>Method Overview</h2>
-      <div class="method-grid">
-        <div class="method-card">
-          <strong>Human Motion Representation</strong>
-          <p>Dynamic meshes are parameterized with human features that stabilize optimization across articulated body motion.</p>
-        </div>
-        <div class="method-card">
-          <strong>Direct Radar Path</strong>
-          <p>The primary reflection path is modeled with inverse rendering and a microfacet BRDF over the moving human surface.</p>
-        </div>
-        <div class="method-card">
-          <strong>Indirect Multipath</strong>
-          <p>3D Gaussian Splatting and virtual receiver geometry approximate room-specific multipath interference efficiently.</p>
-        </div>
-      </div>
     </section>
 
     <section id="gallery">
