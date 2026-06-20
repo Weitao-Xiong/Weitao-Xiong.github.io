@@ -1,6 +1,7 @@
 ---
 title: "HybridSim: A Physics-Learning Hybrid Digital Twin for mmWave Human Sensing"
 authors: Weitao Xiong, Tianyu Liu, Peng Li, Kok Chung Chua, Toa Chean Khim, Pu Wang, Hongfei Xue†
+website: https://weitao-xiong.github.io/HybridSim/
 published: 2026-03-06T20:25:00.000+08:00
 image: /src/assets/images/mmWave_teaser.jpg
 coverImage: /src/assets/images/mmWave_teaser.jpg

@@ -278,7 +278,7 @@
     }
 
     .zoomable {
-      cursor: zoom-in;
+      cursor: crosshair;
       transition: transform 140ms ease, box-shadow 140ms ease;
     }
 
@@ -294,43 +294,39 @@
       font-size: 14px;
     }
 
-    .zoom-overlay {
+    .magnifier-panel {
       position: fixed;
-      inset: 0;
+      right: 22px;
+      bottom: 22px;
       display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: rgba(3, 7, 18, 0.84);
-      z-index: 1000;
-      cursor: zoom-out;
-    }
-
-    .zoom-overlay.is-open {
-      display: flex;
-    }
-
-    .zoom-panel {
-      max-width: min(1180px, 96vw);
-      max-height: 92vh;
-      text-align: center;
-    }
-
-    .zoom-panel img {
-      display: block;
-      max-width: 100%;
-      max-height: 84vh;
-      margin: 0 auto;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      width: min(420px, calc(100vw - 44px));
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 18px;
-      background: #000000;
-      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+      background: rgba(3, 7, 18, 0.86);
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
+      z-index: 1000;
+      pointer-events: none;
     }
 
-    .zoom-caption {
-      margin-top: 12px;
+    .magnifier-panel.is-visible {
+      display: block;
+    }
+
+    .magnifier-panel canvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 14px;
+      background: #000000;
+    }
+
+    .magnifier-caption {
+      margin-top: 9px;
       color: #f8fafc;
-      font-size: 14px;
+      font-size: 13px;
+      text-align: center;
     }
 
     @media (max-width: 980px) {
@@ -408,7 +404,7 @@
       <div class="gallery-intro">
         <div>
           <h2>HD Motion and Time-Doppler Gallery</h2>
-          <p class="gallery-note">Each action uses an 800 x 800 H.264 MP4 for motion playback. Click any GT or Sim time-Doppler image to inspect it at a larger size.</p>
+          <p class="gallery-note">Each action uses an 800 x 800 H.264 MP4 for motion playback. Move the cursor over any GT or Sim time-Doppler image to inspect it with the canvas magnifier.</p>
         </div>
       </div>
       <div class="gallery-grid">
@@ -498,39 +494,67 @@
     <p class="footer">HybridSim project page. Static layout inspired by common academic project-page templates.</p>
   </main>
 
-  <div id="zoomOverlay" class="zoom-overlay" role="button" aria-label="Close enlarged image">
-    <div class="zoom-panel">
-      <img id="zoomImage" alt="">
-      <div id="zoomCaption" class="zoom-caption"></div>
-    </div>
+  <div id="magnifierPanel" class="magnifier-panel" aria-hidden="true">
+    <canvas id="magnifierCanvas" width="720" height="720"></canvas>
+    <div id="magnifierCaption" class="magnifier-caption"></div>
   </div>
 
   <script>
-    const overlay = document.getElementById("zoomOverlay");
-    const zoomImage = document.getElementById("zoomImage");
-    const zoomCaption = document.getElementById("zoomCaption");
+    const magnifierPanel = document.getElementById("magnifierPanel");
+    const magnifierCanvas = document.getElementById("magnifierCanvas");
+    const magnifierCaption = document.getElementById("magnifierCaption");
+    const magnifierContext = magnifierCanvas.getContext("2d");
+    const zoomScale = 2.8;
 
-    function closeZoom() {
-      overlay.classList.remove("is-open");
-      zoomImage.removeAttribute("src");
-      zoomImage.alt = "";
-      zoomCaption.textContent = "";
+    function drawMagnifiedImage(image, event) {
+      const rect = image.getBoundingClientRect();
+      const xRatio = (event.clientX - rect.left) / rect.width;
+      const yRatio = (event.clientY - rect.top) / rect.height;
+      const naturalX = Math.max(0, Math.min(image.naturalWidth, xRatio * image.naturalWidth));
+      const naturalY = Math.max(0, Math.min(image.naturalHeight, yRatio * image.naturalHeight));
+      const sampleSize = Math.min(image.naturalWidth, image.naturalHeight) / zoomScale;
+      const sourceX = Math.max(0, Math.min(image.naturalWidth - sampleSize, naturalX - sampleSize / 2));
+      const sourceY = Math.max(0, Math.min(image.naturalHeight - sampleSize, naturalY - sampleSize / 2));
+
+      magnifierContext.clearRect(0, 0, magnifierCanvas.width, magnifierCanvas.height);
+      magnifierContext.imageSmoothingEnabled = true;
+      magnifierContext.imageSmoothingQuality = "high";
+      magnifierContext.drawImage(
+        image,
+        sourceX,
+        sourceY,
+        sampleSize,
+        sampleSize,
+        0,
+        0,
+        magnifierCanvas.width,
+        magnifierCanvas.height
+      );
+
+      magnifierContext.strokeStyle = "rgba(255, 255, 255, 0.78)";
+      magnifierContext.lineWidth = 2;
+      magnifierContext.beginPath();
+      magnifierContext.moveTo(magnifierCanvas.width / 2 - 34, magnifierCanvas.height / 2);
+      magnifierContext.lineTo(magnifierCanvas.width / 2 + 34, magnifierCanvas.height / 2);
+      magnifierContext.moveTo(magnifierCanvas.width / 2, magnifierCanvas.height / 2 - 34);
+      magnifierContext.lineTo(magnifierCanvas.width / 2, magnifierCanvas.height / 2 + 34);
+      magnifierContext.stroke();
     }
 
     document.querySelectorAll(".zoomable").forEach((image) => {
-      image.addEventListener("click", () => {
-        zoomImage.src = image.src;
-        zoomImage.alt = image.alt;
-        zoomCaption.textContent = image.alt + " - click anywhere or press Esc to close";
-        overlay.classList.add("is-open");
+      image.addEventListener("mouseenter", (event) => {
+        magnifierCaption.textContent = image.alt + " - canvas magnifier";
+        magnifierPanel.classList.add("is-visible");
+        drawMagnifiedImage(image, event);
       });
-    });
 
-    overlay.addEventListener("click", closeZoom);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeZoom();
-      }
+      image.addEventListener("mousemove", (event) => {
+        drawMagnifiedImage(image, event);
+      });
+
+      image.addEventListener("mouseleave", () => {
+        magnifierPanel.classList.remove("is-visible");
+      });
     });
   </script>
 </body>
