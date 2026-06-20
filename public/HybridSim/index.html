@@ -272,8 +272,8 @@
 
     .magnifier-panel {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      left: 0;
+      top: 0;
       display: none;
       width: min(420px, calc(100vw - 44px));
       padding: 12px;
@@ -476,8 +476,29 @@
     const magnifierCaption = document.getElementById("magnifierCaption");
     const magnifierContext = magnifierCanvas.getContext("2d");
     const zoomScale = 2.8;
+    const panelGap = 18;
+
+    function positionMagnifier(event) {
+      const panelRect = magnifierPanel.getBoundingClientRect();
+      const margin = 12;
+      let left = event.clientX + panelGap;
+      let top = event.clientY + panelGap;
+
+      if (left + panelRect.width + margin > window.innerWidth) {
+        left = event.clientX - panelRect.width - panelGap;
+      }
+      if (top + panelRect.height + margin > window.innerHeight) {
+        top = event.clientY - panelRect.height - panelGap;
+      }
+
+      left = Math.max(margin, Math.min(left, window.innerWidth - panelRect.width - margin));
+      top = Math.max(margin, Math.min(top, window.innerHeight - panelRect.height - margin));
+      magnifierPanel.style.left = left + "px";
+      magnifierPanel.style.top = top + "px";
+    }
 
     function drawMagnifiedImage(image, event) {
+      positionMagnifier(event);
       const rect = image.getBoundingClientRect();
       const xRatio = (event.clientX - rect.left) / rect.width;
       const yRatio = (event.clientY - rect.top) / rect.height;
