@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HybridSim project page: a physics-learning hybrid digital twin for mmWave human sensing.">
+  <title>HybridSim | mmWave Human Sensing</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f2f5f9;
+      --fg: #172033;
+      --muted: #657085;
+      --accent: #2364d2;
+      --accent-soft: #e7f0ff;
+      --border: #d8dee9;
+      --shadow: 0 18px 45px rgba(23, 32, 51, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 34px 22px 64px;
+    }
+
+    .hero {
+      padding: 48px 28px 30px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .venue {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #16499f;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin: 0 auto 18px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 880px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .authors,
+    .affiliations {
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .authors {
+      color: var(--fg);
+      font-weight: 650;
+    }
+
+    .affiliations {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 126px;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--fg);
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.08);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .teaser {
+      margin: 30px auto 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: #000000;
+    }
+
+    .teaser img {
+      display: block;
+      width: 100%;
+    }
+
+    section {
+      margin-top: 34px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 10px 30px rgba(23, 32, 51, 0.06);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .method-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface-soft);
+    }
+
+    .method-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--fg);
+    }
+
+    .gallery-intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .gallery-note {
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .action-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface-soft);
+    }
+
+    .action-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .action-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .quality-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #16499f;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .action-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 12px;
+      padding: 14px;
+      align-items: start;
+    }
+
+    .media-label {
+      display: inline-block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    video,
+    .zoomable {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #000000;
+    }
+
+    video {
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    }
+
+    .signal-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .zoomable {
+      cursor: zoom-in;
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .zoomable:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(23, 32, 51, 0.18);
+    }
+
+    .footer {
+      margin-top: 26px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .zoom-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(3, 7, 18, 0.84);
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .zoom-overlay.is-open {
+      display: flex;
+    }
+
+    .zoom-panel {
+      max-width: min(1180px, 96vw);
+      max-height: 92vh;
+      text-align: center;
+    }
+
+    .zoom-panel img {
+      display: block;
+      max-width: 100%;
+      max-height: 84vh;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      background: #000000;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+    }
+
+    .zoom-caption {
+      margin-top: 12px;
+      color: #f8fafc;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .method-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 12px 42px;
+      }
+
+      .hero,
+      section {
+        padding: 22px 16px;
+      }
+
+      .action-body {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="venue">Project Page</div>
+      <h1>HybridSim: A Physics-Learning Hybrid Digital Twin for mmWave Human Sensing</h1>
+      <p class="subtitle">Synthesizing realistic mmWave radar signals from dynamic human meshes and fixed-room indoor scenes.</p>
+      <p class="authors">
+        Weitao Xiong<sup>1,2</sup> &nbsp; Tianyu Liu<sup>2</sup> &nbsp; Peng Li<sup>2</sup> &nbsp; Kok Chung Chua<sup>1</sup><br>
+        Toa Chean Khim<sup>1</sup> &nbsp; Pu Wang<sup>3</sup> &nbsp; Hongfei Xue<sup>3,*</sup>
+      </p>
+      <p class="affiliations">
+        <sup>1</sup>Xiamen University Malaysia &nbsp; <sup>2</sup>The Hong Kong University of Science and Technology &nbsp; <sup>3</sup>University of North Carolina at Charlotte<br>
+        <sup>*</sup>Corresponding Author
+      </p>
+      <nav class="buttons" aria-label="Project links">
+        <a class="button primary" href="#gallery">HD Gallery</a>
+        <a class="button" href="https://github.com/Weitao-Xiong/mmWave_Simulation">Code</a>
+        <a class="button" href="#abstract">Abstract</a>
+      </nav>
+      <figure class="teaser">
+        <img src="assets/images/mmWave_teaser.jpg" alt="HybridSim teaser">
+      </figure>
+    </header>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>High-fidelity simulation of mmWave radar signals for dynamic human motion is valuable for developing radar-based human sensing models, but collecting accurately labeled measurements for each deployment site remains expensive.</p>
+      <p>HybridSim synthesizes mmWave radar signals from dynamic human meshes under a fixed indoor room configuration by decoupling propagation into direct inverse-rendering paths and indirect 3DGS-based paths. This hybrid design improves agreement with physically based references while keeping site-specific data augmentation practical.</p>
+    </section>
+
+    <section id="method">
+      <h2>Method Overview</h2>
+      <div class="method-grid">
+        <div class="method-card">
+          <strong>Human Motion Representation</strong>
+          <p>Dynamic meshes are parameterized with human features that stabilize optimization across articulated body motion.</p>
+        </div>
+        <div class="method-card">
+          <strong>Direct Radar Path</strong>
+          <p>The primary reflection path is modeled with inverse rendering and a microfacet BRDF over the moving human surface.</p>
+        </div>
+        <div class="method-card">
+          <strong>Indirect Multipath</strong>
+          <p>3D Gaussian Splatting and virtual receiver geometry approximate room-specific multipath interference efficiently.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="gallery-intro">
+        <div>
+          <h2>HD Motion and Time-Doppler Gallery</h2>
+          <p class="gallery-note">Each action uses an 800 x 800 H.264 MP4 for motion playback. Click any GT or Sim time-Doppler image to inspect it at a larger size.</p>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A1</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a1.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a1_gt.png" alt="Haoyu A1 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a1_sim.png" alt="Haoyu A1 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A2</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a2.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a2_gt.png" alt="Haoyu A2 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a2_sim.png" alt="Haoyu A2 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A3</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a3.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a3_gt.png" alt="Haoyu A3 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a3_sim.png" alt="Haoyu A3 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A4</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a4.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a4_gt.png" alt="Haoyu A4 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a4_sim.png" alt="Haoyu A4 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A5</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a5.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a5_gt.png" alt="Haoyu A5 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a5_sim.png" alt="Haoyu A5 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A6</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a6.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a6_gt.png" alt="Haoyu A6 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a6_sim.png" alt="Haoyu A6 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A7</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a7.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a7_gt.png" alt="Haoyu A7 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a7_sim.png" alt="Haoyu A7 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+        <article class="action-card">
+          <div class="action-header"><span class="action-title">Haoyu A8</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-body">
+            <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a8.mp4" controls muted loop playsinline preload="metadata"></video></div>
+            <div class="signal-stack">
+              <div><span class="media-label">GT</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a8_gt.png" alt="Haoyu A8 GT time-Doppler"></div>
+              <div><span class="media-label">Sim</span><img class="zoomable" src="assets/gallery/haoyu/haoyu_a8_sim.png" alt="Haoyu A8 simulated time-Doppler"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer">HybridSim project page. Static layout inspired by common academic project-page templates.</p>
+  </main>
+
+  <div id="zoomOverlay" class="zoom-overlay" role="button" aria-label="Close enlarged image">
+    <div class="zoom-panel">
+      <img id="zoomImage" alt="">
+      <div id="zoomCaption" class="zoom-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("zoomOverlay");
+    const zoomImage = document.getElementById("zoomImage");
+    const zoomCaption = document.getElementById("zoomCaption");
+
+    function closeZoom() {
+      overlay.classList.remove("is-open");
+      zoomImage.removeAttribute("src");
+      zoomImage.alt = "";
+      zoomCaption.textContent = "";
+    }
+
+    document.querySelectorAll(".zoomable").forEach((image) => {
+      image.addEventListener("click", () => {
+        zoomImage.src = image.src;
+        zoomImage.alt = image.alt;
+        zoomCaption.textContent = image.alt + " - click anywhere or press Esc to close";
+        overlay.classList.add("is-open");
+      });
+    });
+
+    overlay.addEventListener("click", closeZoom);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeZoom();
+      }
+    });
+  </script>
+</body>
+</html>
