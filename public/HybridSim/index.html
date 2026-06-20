@@ -154,6 +154,26 @@
       color: var(--muted);
     }
 
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .method-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface-soft);
+    }
+
+    .method-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--fg);
+    }
+
     .gallery-intro {
       display: flex;
       flex-wrap: wrap;
@@ -194,15 +214,6 @@
     .action-title {
       font-size: 18px;
       font-weight: 800;
-    }
-
-    .quality-pill {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #16499f;
-      font-size: 12px;
-      font-weight: 750;
     }
 
     .action-body {
@@ -295,6 +306,7 @@
     }
 
     @media (max-width: 980px) {
+      .method-grid,
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -345,6 +357,20 @@
       <p>HybridSim synthesizes mmWave radar signals from dynamic human meshes under a fixed indoor room configuration by decoupling propagation into direct inverse-rendering paths and indirect 3DGS-based paths. This hybrid design improves agreement with physically based references while keeping site-specific data augmentation practical.</p>
     </section>
 
+    <section id="method">
+      <h2>Method Overview</h2>
+      <div class="method-grid">
+        <div class="method-card">
+          <strong>Direct Radar Path</strong>
+          <p>The primary reflection path is modeled with inverse rendering and a microfacet BRDF over the moving human surface.</p>
+        </div>
+        <div class="method-card">
+          <strong>Indirect Multipath</strong>
+          <p>3D Gaussian Splatting and virtual receiver geometry approximate room-specific multipath interference efficiently.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="gallery">
       <div class="gallery-intro">
         <div>
@@ -354,7 +380,7 @@
       </div>
       <div class="gallery-grid">
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A1</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A1</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a1.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -364,7 +390,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A2</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A2</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a2.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -374,7 +400,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A3</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A3</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a3.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -384,7 +410,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A4</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A4</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a4.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -394,7 +420,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A5</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A5</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a5.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -404,7 +430,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A6</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A6</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a6.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -414,7 +440,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A7</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A7</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a7.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
@@ -424,7 +450,7 @@
           </div>
         </article>
         <article class="action-card">
-          <div class="action-header"><span class="action-title">Haoyu A8</span><span class="quality-pill">HD MP4</span></div>
+          <div class="action-header"><span class="action-title">Haoyu A8</span></div>
           <div class="action-body">
             <div><span class="media-label">Motion</span><video src="assets/gallery/haoyu_hd/haoyu_a8.mp4" controls muted loop playsinline preload="metadata"></video></div>
             <div class="signal-stack">
